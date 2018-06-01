@@ -2,8 +2,8 @@
 * Task: Update the code so it only uses the let keyword.
 */
 
-var catName;
-var quote;
+let catName;
+let quote;
 
 function catTalk() {
   "use strict";
