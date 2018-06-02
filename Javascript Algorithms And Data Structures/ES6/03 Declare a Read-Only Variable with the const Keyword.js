@@ -9,13 +9,12 @@ function printManyTimes(str) {
 
   // change code below this line
 
-  var sentence = str + " is cool!";
-  for(var i = 0; i < str.length; i+=2) {
+  const SENTENCE = str + " is cool!";
+  for(let i = 0; i < str.length; i+=2) {
     console.log(str);
   }
 
   // change code above this line
 
 }
-
 printManyTimes("freeCodeCamp");
