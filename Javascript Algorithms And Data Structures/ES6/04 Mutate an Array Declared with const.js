@@ -8,7 +8,7 @@ function editInPlace() {
   // change code below this line
 
   // s = [2, 5, 7]; <- this is invalid
-
+  s.splice(0,0,s.pop());
   // change code above this line
 }
 editInPlace();
