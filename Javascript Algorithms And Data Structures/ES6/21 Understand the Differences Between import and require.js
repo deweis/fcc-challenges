@@ -4,4 +4,5 @@
 * called "string_functions", and it is in the same directory as the current file.
 */
 "use strict";
+import { capitalizeString } from "string_functions"
 capitalizeString("hello!");
