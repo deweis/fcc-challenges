@@ -4,3 +4,4 @@
 * statement to the top of the file, using the object provided.
 */
 "use strict";
+import * as myCapitalizeStringsModule from "capitalize_strings";
