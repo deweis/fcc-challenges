@@ -3,5 +3,5 @@
 * use. Utilizing the first way I demonstrated export, export the two variables.
 */
 "use strict";
-const foo = "bar";
-const boo = "far";
+export const foo = "bar";
+export const boo = "far";
