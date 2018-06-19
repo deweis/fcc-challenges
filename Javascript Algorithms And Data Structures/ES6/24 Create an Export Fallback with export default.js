@@ -3,4 +3,4 @@
 * Please add the necessary code to do so.
 */
 "use strict";
-function subtract(x,y) {return x - y;}
+export default function subtract(x,y) {return x - y;}
