@@ -16,7 +16,17 @@
 function makeClass() {
   "use strict";
   /* Alter code below this line */
-
+  class Thermostat {
+    constructor(fahrenheit) {
+      this._temperature = (5 / 9 ) * (fahrenheit - 32);
+    }
+    get temperature() {
+      return this._temperature;
+    }
+    set temperature(update) {
+      this._temperature = update;
+    }
+  }
   /* Alter code above this line */
   return Thermostat;
 }
