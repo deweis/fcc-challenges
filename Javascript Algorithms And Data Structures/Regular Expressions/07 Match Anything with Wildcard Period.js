@@ -3,5 +3,5 @@
 * "fun", "pun", "nun", and "bun". Your regex should use the wildcard character.
 */
 let exampleStr = "Let's have fun with regular expressions!";
-let unRegex = /change/; // Change this line
+let unRegex = /.un/; // Change this line
 let result = unRegex.test(exampleStr);
