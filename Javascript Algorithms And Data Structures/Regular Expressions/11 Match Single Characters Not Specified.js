@@ -3,5 +3,5 @@
 * or a vowel. Remember to include the appropriate flags in the regex.
 */
 let quoteSample = "3 blind mice.";
-let myRegex = /change/; // Change this line
-let result = myRegex; // Change this line
+let myRegex = /[^0-9aeiou]/gi; // Change this line
+let result = quoteSample.match(myRegex); // Change this line
