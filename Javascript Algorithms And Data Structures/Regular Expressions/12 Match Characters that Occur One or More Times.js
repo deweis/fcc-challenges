@@ -3,5 +3,5 @@
 * "Mississippi". Write a regex that uses the + sign.
 */
 let difficultSpelling = "Mississippi";
-let myRegex = /change/; // Change this line
+let myRegex = /s+/g; // Change this line
 let result = difficultSpelling.match(myRegex);
