@@ -3,5 +3,5 @@
 * characters in various quotes and strings.
 */
 let quoteSample = "The five boxing wizards jump quickly.";
-let alphabetRegexV2 = /change/; // Change this line
+let alphabetRegexV2 = /\w/g; // Change this line
 let result = quoteSample.match(alphabetRegexV2).length;
