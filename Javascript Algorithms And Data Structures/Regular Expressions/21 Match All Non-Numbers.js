@@ -3,5 +3,5 @@
 * non-digits are in movie titles.
 */
 let numString = "Your sandwich will be $5.00";
-let noNumRegex = /change/; // Change this line
+let noNumRegex = /\D/g; // Change this line
 let result = numString.match(noNumRegex).length;
