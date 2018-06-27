@@ -23,7 +23,13 @@ let users = {
 
 function countOnline(obj) {
   // change code below this line
-
+  let sum = 0;
+  for (let user in obj) {
+    if (obj[user].online === true) {
+      sum += 1;
+    }
+  }
+  return sum;
   // change code above this line
 }
 
