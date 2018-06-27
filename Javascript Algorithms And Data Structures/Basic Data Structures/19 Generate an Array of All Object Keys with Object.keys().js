@@ -23,7 +23,7 @@ let users = {
 
 function getArrayOfUsers(obj) {
   // change code below this line
-
+  return Object.keys(obj);
   // change code above this line
 }
 
