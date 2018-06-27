@@ -3,5 +3,5 @@
 * four or more letter z's.
 */
 let haStr = "Hazzzzah";
-let haRegex = /change/; // Change this line
+let haRegex = /Haz{4,}ah/; // Change this line
 let result = haRegex.test(haStr);
