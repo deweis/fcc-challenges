@@ -3,5 +3,5 @@
 * and the British English (favourite) version of the word.
 */
 let favWord = "favorite";
-let favRegex = /change/; // Change this line
+let favRegex = /favou?rite/; // Change this line
 let result = favRegex.test(favWord);
