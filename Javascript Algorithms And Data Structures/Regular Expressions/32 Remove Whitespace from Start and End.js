@@ -7,5 +7,7 @@
 * using regular expressions.
 */
 let hello = "   Hello, World!  ";
-let wsRegex = /change/; // Change this line
-let result = hello; // Change this line
+let wsRegex1 = /(^\s+)/;
+let wsRegex2 = /(\s+$)/;
+let replaceText = '';
+let result = hello.replace(wsRegex1, replaceText).replace(wsRegex2, replaceText);
