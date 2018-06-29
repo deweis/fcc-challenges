@@ -3,6 +3,6 @@
 * the replaceText variable to replace "good" with "okey-dokey".
 */
 let huhText = "This sandwich is good.";
-let fixRegex = /change/; // Change this line
-let replaceText = ""; // Change this line
+let fixRegex = /good/; // Change this line
+let replaceText = "okey-dokey"; // Change this line
 let result = huhText.replace(fixRegex, replaceText);
