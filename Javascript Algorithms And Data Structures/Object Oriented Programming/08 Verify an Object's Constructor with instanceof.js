@@ -10,3 +10,5 @@ function House(numBedrooms) {
 }
 
 // Add your code below this line
+const myHouse = new House(3);
+myHouse instanceof House;
