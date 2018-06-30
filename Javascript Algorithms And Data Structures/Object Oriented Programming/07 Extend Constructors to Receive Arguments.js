@@ -4,6 +4,10 @@
 * create a new Dog saved in a variable terrier. Pass it two strings as arguments
 * for the name and color properties.
 */
-function Dog() {
-
+function Dog(name, color) {
+  this.name = name;
+  this.color = color;
+  this.numLegs = 4;
 }
+
+const terrier = new Dog('doggy', 'grey');
