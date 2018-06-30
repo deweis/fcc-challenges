@@ -8,3 +8,4 @@ function Dog() {
   this.numLegs = 4;
 }
 // Add your code below this line
+const hound = new Dog();
