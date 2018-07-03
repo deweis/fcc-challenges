@@ -12,4 +12,12 @@ let beagle = new Dog("Snoopy");
 let ownProps = [];
 let prototypeProps = [];
 
-// Add your code below this line 
+// Add your code below this line
+for (let property in beagle) {
+  console.log(property);
+  if(beagle.hasOwnProperty(property)) {
+    ownProps.push(property);
+  } else {
+    prototypeProps.push(property);
+  }
+}
