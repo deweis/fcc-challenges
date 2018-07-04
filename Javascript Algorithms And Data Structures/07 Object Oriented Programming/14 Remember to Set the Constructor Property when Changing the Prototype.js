@@ -7,7 +7,7 @@ function Dog(name) {
 
 // Modify the code below this line
 Dog.prototype = {
-
+  constructor: Dog,
   numLegs: 2,
   eat: function() {
     console.log("nom nom nom");
