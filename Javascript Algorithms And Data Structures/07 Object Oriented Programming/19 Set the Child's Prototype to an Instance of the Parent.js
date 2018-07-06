@@ -13,6 +13,7 @@ Animal.prototype = {
 function Dog() { }
 
 // Add your code below this line
+Dog.prototype = Object.create(Animal.prototype);
 
 
 let beagle = new Dog();
