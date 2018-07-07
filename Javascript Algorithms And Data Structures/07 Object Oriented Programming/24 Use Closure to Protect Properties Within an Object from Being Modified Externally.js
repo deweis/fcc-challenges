@@ -3,7 +3,9 @@
 " variable. Then, create a method getWeight that returns the value of weight.
 */
 function Bird() {
-  this.weight = 15;
+  let weight = 15;
 
-
+  this.getWeight = function() {
+    return weight;
+  }
 }
