@@ -13,3 +13,11 @@ let boat = {
 };
 
 // Add your code below this line
+let glideMixin = function(obj) {
+  obj.glide = function() {
+    console.log("Gliding");
+  }
+};
+
+glideMixin(bird);
+glideMixin(boat);
