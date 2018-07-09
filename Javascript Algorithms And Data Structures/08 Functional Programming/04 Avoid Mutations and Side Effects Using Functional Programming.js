@@ -7,7 +7,8 @@ var fixedValue = 4;
 
 function incrementer () {
   // Add your code below this line
-
+  let newValue = fixedValue;
+  return ++newValue;
 
   // Add your code above this line
 }
