@@ -8,9 +8,9 @@
 var fixedValue = 4;
 
 // Add your code below this line
-function incrementer () {
+function incrementer (input) {
 
-
+  return ++input;
   // Add your code above this line
 }
 
