@@ -13,8 +13,10 @@ var bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Movi
 
 // Add your code below this line
 function add (bookName) {
+  let arr = list.slice(0);
+  arr.push(bookName);
 
-  return bookList.push(bookName);
+  return arr;
 
   // Add your code above this line
 }
@@ -25,8 +27,10 @@ function add (bookName) {
 // Add your code below this line
 function remove (bookName) {
   if (bookList.indexOf(bookName) >= 0) {
+    let arr = list.slice(0);
+    arr.splice(arr.indexOf(bookName), 1);
 
-    return bookList.splice(0, 1, bookName);
+    return arr;
 
     // Add your code above this line
     }
