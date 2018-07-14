@@ -9,6 +9,14 @@ Array.prototype.myMap = function(callback){
   var newArray = [];
   // Add your code below this line
 
+  /* Version with for loop */
+  for (let i = 0; i < this.length; i++) {
+    newArray.push( callback(this[i]) );
+  }
+
+  /* Version with forEach */
+   this.forEach(x => newArray.push(callback(x)));
+   
   // Add your code above this line
   return newArray;
 
