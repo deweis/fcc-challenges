@@ -122,8 +122,9 @@ var watchList = [
 
 // Add your code below this line
 
-var filteredList;
+const filteredList = watchList.map(obj => ({title: obj.Title, rating: obj.imdbRating}))
+                              .filter(x => x.rating >= +8);
 
 // Add your code above this line
 
-console.log(filteredList); 
+console.log(filteredList);
