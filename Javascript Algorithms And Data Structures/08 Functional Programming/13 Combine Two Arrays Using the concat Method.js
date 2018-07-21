@@ -4,7 +4,7 @@
 */
 function nonMutatingConcat(original, attach) {
   // Add your code below this line
-
+  return original.concat(attach);
 
   // Add your code above this line
 }
