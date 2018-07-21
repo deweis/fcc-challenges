@@ -123,8 +123,10 @@ var watchList = [
 
 // Add your code below this line
 
-var averageRating;
+const ratings = watchList.filter( x => x.Director === 'Christopher Nolan').map( x => +x.imdbRating);
+
+const averageRating = ratings.reduce( (x,y) => x + y) / ratings.length;
 
 // Add your code above this line
 
-console.log(averageRating); 
+console.log(averageRating);
