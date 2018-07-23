@@ -4,7 +4,7 @@
 */
 function checkPositive(arr) {
   // Add your code below this line
-
+  return arr.every(x => x >= 0);
 
   // Add your code above this line
 }
