@@ -4,12 +4,13 @@ Then change the value of the color property for the .blog-post and h2 to the
 $text-color variable.
 -->
 <style type='text/sass'>
-  .header{
-    text-align: center;
-  }
-  .blog-post, h2 {
-    color: red;
-  }
+$text-color: red;
+.header{
+  text-align: center;
+}
+.blog-post, h2 {
+  color: $text-color;
+}
 </style>
 
 <h1 class="header">Learn Sass</h1>
