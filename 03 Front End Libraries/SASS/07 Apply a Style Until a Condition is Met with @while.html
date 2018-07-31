@@ -8,7 +8,11 @@ loop!
 -->
 <style type='text/sass'>
 
-
+ $x: 1;
+ @while $x < 13 {
+   .text-#{$x} { font-size: 5px * $x;}
+   $x: $x + 1;
+  }
 
 </style>
 
