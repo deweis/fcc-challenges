@@ -6,3 +6,12 @@
 * any text you want within each element.
 */
 // write your code here
+const JSX = <div>
+                <h1>Title</h1>
+                <p>text</p>
+                <ul>
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                </ul>
+            </div>
