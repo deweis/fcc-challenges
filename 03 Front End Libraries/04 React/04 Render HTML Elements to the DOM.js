@@ -13,3 +13,5 @@ const JSX = (
   </div>
 );
 // change code below this line
+const target = document.getElementById('challenge-node');
+ReactDOM.render(JSX, target);
