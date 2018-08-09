@@ -7,7 +7,9 @@ Note: The text is considered a child of the div element, so you will not be able
 */
 const MyComponent = function() {
   // change code below this line
-
+  return (
+    <div>Some Text</div>
+  );
 
 
   // change code above this line
