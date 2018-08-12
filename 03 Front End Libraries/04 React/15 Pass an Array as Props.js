@@ -9,7 +9,7 @@
 */
 const List= (props) => {
   { /* change code below this line */ }
-  return <p>{}</p>
+  return (<p>{props.tasks.join(', ')}</p>);
   { /* change code above this line */ }
 };
 
@@ -23,9 +23,9 @@ class ToDo extends React.Component {
         <h1>To Do Lists</h1>
         <h2>Today</h2>
         { /* change code below this line */ }
-        <List/>
+        <List tasks={['tbd 1', 'tbd 2']}/>
         <h2>Tomorrow</h2>
-        <List/>
+        <List tasks={['tbd 3', 'tbd 4', 'tbd 5']}/>
         { /* change code above this line */ }
       </div>
     );
