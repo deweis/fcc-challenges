@@ -10,7 +10,7 @@ class MyComponent extends React.Component {
   }
   componentWillMount() {
     // change code below this line
-
+    console.log('will mount..');
     // change code above this line
   }
   render() {
