@@ -31,6 +31,7 @@ class Results extends React.Component {
       <h1>
       {
         /* change code here */
+        this.props.fiftyFifty === true ? 'You win!' : 'You lose!'
       }
       </h1>
     )
@@ -47,7 +48,7 @@ class GameOfChance extends React.Component {
   }
   handleClick() {
     this.setState({
-      counter: 0 // change code here
+      counter: this.state.counter + 1, // change code here
     });
   }
   render() {
@@ -56,7 +57,7 @@ class GameOfChance extends React.Component {
       <div>
         <button onClick={this.handleClick}>Play Again</button>
         { /* change code below this line */ }
-
+        <Results fiftyFifty={expression} />
         { /* change code above this line */ }
         <p>{'Turn: ' + this.state.counter}</p>
       </div>
