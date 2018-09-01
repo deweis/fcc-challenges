@@ -25,6 +25,10 @@ class MyToDoList extends React.Component {
   constructor(props) {
     super(props);
     // change code below this line
+    this.state = {
+      userInput: '',
+      toDoList: [],
+    };
 
     // change code above this line
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,7 +46,11 @@ class MyToDoList extends React.Component {
     });
   }
   render() {
-    const items = null; // change code here
+    const items = this.state.toDoList.map((item) => {
+      return (
+        <li>{item}</li>
+      );
+    });
     return (
       <div>
         <textarea
