@@ -8,3 +8,4 @@ const store = Redux.createStore(
 );
 
 // change code below this line
+const currentState = store.getState();
