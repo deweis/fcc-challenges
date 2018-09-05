@@ -6,27 +6,30 @@
 * Note: It's generally a convention to write constants in all uppercase, and
 * this is standard practice in Redux as well.
 */
+
 // change code below this line
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
 
 // change code above this line
 
 const defaultState = {
-  authenticated: false
+  authenticated: false,
 };
 
 const authReducer = (state = defaultState, action) => {
 
   switch (action.type) {
 
-    case 'LOGIN':
+    case LOGIN:
       return {
-        authenticated: true
-      }
+        authenticated: true,
+      };
 
-    case 'LOGOUT':
+    case LOGOUT:
       return {
-        authenticated: false
-      }
+        authenticated: false,
+      };
 
     default:
       return state;
@@ -39,12 +42,12 @@ const store = Redux.createStore(authReducer);
 
 const loginUser = () => {
   return {
-    type: 'LOGIN'
-  }
+    type: LOGIN,
+  };
 };
 
 const logoutUser = () => {
   return {
-    type: 'LOGOUT'
-  }
+    type: LOGOUT,
+  };
 };
