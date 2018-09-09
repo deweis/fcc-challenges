@@ -19,7 +19,7 @@ const immutableReducer = (state = todos, action) => {
   switch(action.type) {
     case ADD_TO_DO:
       // don't mutate state here or the tests will fail
-      return
+      return [...state, action.todo];
     default:
       return state;
   }
