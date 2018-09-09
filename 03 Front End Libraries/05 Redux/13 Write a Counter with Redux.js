@@ -7,13 +7,41 @@
 * able to dispatch INCREMENT or DECREMENT actions to increment or decrement the
 * state held in the store. Good luck building your first Redux app!
 */
-const INCREMENT = null; // define a constant for increment action types
-const DECREMENT = null; // define a constant for decrement action types
 
-const counterReducer = null; // define the counter reducer which will increment or decrement the state based on the action it receives
+// define a constant for increment action types
+const INCREMENT = 'INCREMENT';
 
-const incAction = null; // define an action creator for incrementing
+// define a constant for decrement action types
+const DECREMENT = 'DECREMENT';
 
-const decAction = null; // define an action creator for decrementing
+/* define the counter reducer which will increment or decrement the state
+   based on the action it receives */
+const counterReducer = (state = 0, action) => {
+  switch (action.type) {
+    case INCREMENT:
+      return state + 1;
 
-const store = null; // define the Redux store here, passing in your reducers
+    case DECREMENT:
+      return state - 1;
+
+    default:
+      return state;
+  }
+};
+
+// define an action creator for incrementing
+const incAction = () => {
+  return {
+    type: INCREMENT,
+  };
+};
+
+// define an action creator for decrementing
+const decAction = () => {
+  return {
+    type: DECREMENT,
+  };
+};
+
+// define the Redux store here, passing in your reducers
+const store = Redux.createStore(counterReducer);
