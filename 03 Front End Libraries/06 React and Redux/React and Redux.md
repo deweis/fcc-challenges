@@ -23,3 +23,11 @@
   Note: Behind the scenes, React Redux uses the `store.subscribe()` method to implement `mapStateToProps()`.
 
   The `mapDispatchToProps()` function is used to provide specific action creators to your React components so they can dispatch actions against the Redux store. It's similar in structure to the `mapStateToProps()` function. It returns an object that maps dispatch actions to property names, which become component `props`. However, instead of returning a piece of `state`, each property returns a function that calls `dispatch` with an action creator and any relevant action data. You have access to this `dispatch` because it's passed in to `mapDispatchToProps()` as a parameter when you define the function, just like you passed `state` to `mapStateToProps()`. Behind the scenes, React Redux is using Redux's `store.dispatch()` to conduct these dispatches with `mapDispatchToProps()`. This is similar to how it uses `store.subscribe()` for components that are mapped to `state`.
+
+- **Connect Redux to React:** Now that you've written both the `mapStateToProps()` and the `mapDispatchToProps()` functions, you can use them to map `state` and `dispatch` to the `props` of one of your React components. The `connect` method from React Redux can handle this task. This method takes two optional arguments, `mapStateToProps` and `mapDispatchToProps()`. They are optional because you may have a component that only needs access to `state` but doesn't need to dispatch any actions, or vice versa.
+
+To use this method, pass in the functions as arguments, and immediately call the result with your component. This syntax is a little unusual and looks like:
+
+`connect(mapStateToProps, mapDispatchToProps)(MyComponent)`
+
+Note: If you want to omit one of the arguments to the `connect` method, you pass `null` in its place.
