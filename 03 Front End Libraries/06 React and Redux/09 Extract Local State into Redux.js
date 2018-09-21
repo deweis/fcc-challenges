@@ -50,8 +50,7 @@ class Presentational extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: '',
-      messages: []
+      input: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
@@ -64,7 +63,7 @@ class Presentational extends React.Component {
   submitMessage() {
     this.setState({
       input: '',
-      messages: this.state.messages.concat(this.state.input)
+      messages: this.props.submitNewMessage(this.state.input),
     });
   }
   render() {
@@ -76,7 +75,7 @@ class Presentational extends React.Component {
           onChange={this.handleChange}/><br/>
         <button onClick={this.submitMessage}>Submit</button>
         <ul>
-          {this.state.messages.map( (message, idx) => {
+          {this.props.messages.map( (message, idx) => {
               return (
                  <li key={idx}>{message}</li>
               )
