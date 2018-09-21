@@ -31,3 +31,7 @@ To use this method, pass in the functions as arguments, and immediately call the
 `connect(mapStateToProps, mapDispatchToProps)(MyComponent)`
 
 Note: If you want to omit one of the arguments to the `connect` method, you pass `null` in its place.
+
+**Finally**, writing React and Redux code generally requires some configuration. This can get complicated quickly. If you are interested in experimenting on your own machine, the [Create React App](https://github.com/facebookincubator/create-react-app) comes configured and ready to go.
+
+Alternatively, you can enable Babel as a JavaScript Preprocessor in CodePen, add React and ReactDOM as external JavaScript resources, and work there as well.
