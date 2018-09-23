@@ -8,8 +8,12 @@ By considering the terms in the Fibonacci sequence whose values do not exceed
 * nth term, find the sum of the even-valued terms.
 */
 function fiboEvenSum(n) {
-  // You can do it!
-  return true;
+  let arr = [1, 1, 2];
+  for (let i = 3; arr.length < n + 2; i++) {
+    arr.push(arr[i - 1] + arr[i - 2]);
+  }
+
+  return arr.filter(x => x % 2 === 0).reduce((x, y) => x + y);
 }
 
 fiboEvenSum(10);
