@@ -3,9 +3,33 @@
 
 What is the largest prime factor of the given number?
 */
-function largestPrimeFactor(number) {
-  // Good luck!
-  return true;
+
+// Try making it recursive
+
+function isPrime(num) {
+  if (num < 2) return false;
+  const half = num / 2;
+  for (let i = 2; i <= half; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+
+  return num;
 }
 
-largestPrimeFactor(13195);
+function largestPrimeFactor(number) {
+  if (isPrime(number)) {
+    return number;
+  }
+
+  let result;
+  const half = number / 2;
+  for (let i = 2; i <= half; i++) {
+    if (isPrime(i) && number % i === 0) {
+      result = isPrime(i);
+    }
+  }
+
+  return result;
+}
