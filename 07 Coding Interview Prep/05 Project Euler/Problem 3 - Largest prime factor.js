@@ -44,12 +44,8 @@ Version 2: Try filling an array with all prime numbers and then get the max
 
 /*
 Version 3: Make the function recursive
---> Works fine for 13195 but getting "Potential infinite loop" error on 600851475143
 */
 
-/* Recursive isPrime
-   divisor to be added is 2 in the beginning
-   I.e. isPrimeRec(16,2); */
 function isPrimeRec(num, divisor) {
   if (num === divisor) {
     return num;
@@ -77,8 +73,3 @@ function largestPrimeFactor(number) {
 }
 
 largestPrimeFactor(600851475143);
-
-/*
-Version 3: Make the largestPrimeFactor recursive as well
---> 
-*/
