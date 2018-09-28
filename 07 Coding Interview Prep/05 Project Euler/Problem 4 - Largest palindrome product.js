@@ -12,6 +12,44 @@ Find the largest palindrome made from the product of two n-digit numbers.
   - Add an outer loop to reduce numB and when numA has reached a palindrome,
     reduce numB by 1 and go into the next round of numA
 */
+function largestPalindromeProduct(n) {
+  const isPalindrome = (num) => Number(String(num).split('').reverse().join('')) === num;
+
+  let numA = [];
+  let numB = [];
+
+  for (let i = 0; i < n; i++) {
+    numA.push(9);
+    numB.push(9);
+  }
+
+  numA = numA.join('');
+  numB = numB.join('');
+
+  let res = [];
+  let counter = 0;
+
+  for (let j = numB; j > 1; j--) {
+    //console.log(j);
+    counter = 0;
+    for (let i = 0; i < numA; i++) {
+      let numAReduced = numA - i;
+      if (isPalindrome(numAReduced * j)) {
+        //console.log(numAReduced + ' * ' + j);
+        //console.log(numAReduced * j);
+        res.push(numAReduced * j);
+        counter = 1;
+      }
+
+      if (counter === 1) {
+
+        break;
+      }
+    }
+  }
+
+  return res.sort((a, b) => b - a)[0];
+}
 
 /* Version 1: Works for n = 2
       Issue: n = 3 returns */
