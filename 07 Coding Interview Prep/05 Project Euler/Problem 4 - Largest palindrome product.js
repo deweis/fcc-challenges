@@ -7,6 +7,51 @@ Find the largest palindrome made from the product of two n-digit numbers.
 */
 
 /*
+ Version 4: Place the outer loop into the recursive function
+ ... but stack exceed.. with n=4..
+*/
+function largestPalindromeProduct(n) {
+  /* define the two numbers based on n */
+  let num1 = [];
+  let num2 = [];
+
+  for (let i = 0; i < n; i++) {
+    num1.push(9);
+    num2.push(9);
+  }
+
+  num1 = num1.join('');
+  num2 = num2.join('');
+
+  /* function to check if a number is a palindrome */
+  const isPalindrome = (num) => Number(String(num).split('').reverse().join('')) === num;
+
+  let maxPal;
+
+  /* the recursion.. */
+  function findPalindrome(numA, numB) {
+    if (numB === 1) {
+      return;
+    } else if (numA === 1 || numA * numB < maxPal) {
+      numA = --numB;
+      findPalindrome(numA, numB);
+    } else if (isPalindrome(numA * numB)) {
+      maxPal = numA * numB;
+      numA = --numB;
+      findPalindrome(numA, numB);
+    } else {
+      findPalindrome(--numA, numB);
+    }
+
+    return maxPal;
+  }
+
+  return findPalindrome(num1, num2);
+}
+
+largestPalindromeProduct(3);
+
+/*
   Version 3: Replace the for loops with recursive functions
 */
 function largestPalindromeProduct(n) {
