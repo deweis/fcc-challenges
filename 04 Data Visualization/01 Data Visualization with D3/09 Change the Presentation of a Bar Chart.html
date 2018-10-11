@@ -12,7 +12,7 @@ like zooming in, and it doesn't change the meaning of the underlying data.
     width: 25px;
     height: 100px;
     /* Add your code below this line */
-
+    margin: 2px;
     /* Add your code above this line */
     display: inline-block;
     background-color: blue;
@@ -28,7 +28,7 @@ like zooming in, and it doesn't change the meaning of the underlying data.
       .append("div")
       .attr("class", "bar")
       // Add your code below this line
-      .style("height", (d) => (d + "px"))
+      .style("height", (d) => ((10*d) + "px"));
 
       // Add your code above this line
   </script>
