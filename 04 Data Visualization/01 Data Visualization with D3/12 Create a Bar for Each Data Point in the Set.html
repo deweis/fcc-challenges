@@ -17,7 +17,9 @@ Task: Use the data(), enter(), and append() methods to create and append a rect
 
     svg.selectAll("rect")
        // Add your code below this line
-
+       .data(dataset)
+       .enter()
+       .append("rect")
 
 
        // Add your code above this line
