@@ -32,7 +32,9 @@ We'll do that in the next challenge.
 
     svg.selectAll("circle")
        // Add your code below this line
-
+       .data(dataset)
+       .enter()
+       .append("circle");
 
 
        // Add your code above this line
