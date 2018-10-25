@@ -34,7 +34,9 @@ Task: Add cx, cy, and r attributes to the circle elements. The cx value should
        .enter()
        .append("circle")
        // Add your code below this line
-
+       .attr("cx", d => d[0])
+       .attr("cy", d => w - d[1])
+       .attr("r", 5);
 
 
        // Add your code above this line
