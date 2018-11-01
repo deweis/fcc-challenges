@@ -54,7 +54,7 @@ Task: The scatter plot now has an x-axis. Create a y-axis in a variable named
 
     const xAxis = d3.axisBottom(xScale);
     // Add your code below this line
-    const yAxis = undefined;
+    const yAxis = d3.axisLeft(yScale);
     // Add your code above this line
 
     svg.append("g")
@@ -62,7 +62,9 @@ Task: The scatter plot now has an x-axis. Create a y-axis in a variable named
        .call(xAxis);
 
     // Add your code below this line
-
+    svg.append("g")
+       .attr("transform", "translate(" + (w - padding) +",0)")
+       .call(yAxis);
 
 
     // Add your code above this line
