@@ -12,7 +12,14 @@ Task: Add a forEach method to loop over the JSON data and create the HTML
         json=JSON.parse(req.responseText);
         var html = "";
         // Add your code below this line
-
+        json.forEach(function(val) {
+          var keys = Object.keys(val);
+          html += "<div class = 'cat'>";
+          keys.forEach(function(key) {
+            html += "<strong>" + key + "</strong>: " + val[key] + "<br>";
+          });
+          html += "</div><br>";
+        });
 
 
         // Add your code above this line
