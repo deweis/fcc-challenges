@@ -8,6 +8,7 @@
     "challenges"
   ],
   "license": "MIT",
+  "version": "0.9",
   "dependencies": {
     "express": "^4.14.0"
   },
