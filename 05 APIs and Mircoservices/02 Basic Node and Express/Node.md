@@ -1,8 +1,8 @@
 boilerplate from https://github.com/freeCodeCamp/boilerplate-npm/
 --> removed git stuff
 
-- URL to edit: https://glitch.com/~clammy-bench
-- URL to fCC test: https://clammy-bench.glitch.me/
+- URL to edit: https://glitch.com/edit/#!/fcc-node-express-dw
+- URL to fCC test: https://fcc-node-express-dw.glitch.me
 
 **Node.js** is a JavaScript tool that allows developers to write backend (server-side) programs in JavaScript. Node.js comes with a handful of built-in modules—small, independent programs—that help facilitate this purpose. Some of the core modules include:
 
