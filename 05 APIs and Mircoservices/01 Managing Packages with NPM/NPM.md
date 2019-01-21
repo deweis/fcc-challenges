@@ -22,4 +22,5 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 
 This means that PATCHes are bug fixes and MINORs add new features but neither of them break what worked before. Finally, MAJORs add changes that won’t work with earlier versions.
 
-To allow a npm dependency to get updated to the `latest PATCH-version`, you can prefix the dependency’s version with the tilde-character `(~)`.
+To allow a npm dependency to get updated to the **latest PATCH-version**, you can prefix the dependency’s version with the tilde-character `(~)`.
+The caret `(^)` allows npm to install future updates as well. The difference is that the caret will allow **both MINOR updates and PATCHes**.
