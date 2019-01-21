@@ -4,7 +4,8 @@
   "description": "The greatest..",
   "keywords": [
     "freecodecamp",
-    "npm",
+    "node",
+    "express",
     "challenges"
   ],
   "license": "MIT",
