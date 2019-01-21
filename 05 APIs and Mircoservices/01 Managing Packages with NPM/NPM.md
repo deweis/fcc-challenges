@@ -21,3 +21,5 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 - **PATCH** version when you make backwards-compatible bug fixes.
 
 This means that PATCHes are bug fixes and MINORs add new features but neither of them break what worked before. Finally, MAJORs add changes that won’t work with earlier versions.
+
+To allow a npm dependency to get updated to the `latest PATCH-version`, you can prefix the dependency’s version with the tilde-character `(~)`.
