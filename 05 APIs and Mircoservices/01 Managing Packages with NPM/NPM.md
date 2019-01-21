@@ -1,8 +1,8 @@
 boilerplate from https://github.com/freeCodeCamp/boilerplate-npm/
 --> removed git stuff
 
-- URL to edit: https://glitch.com/~clammy-bench
-- URL to fCC test: https://clammy-bench.glitch.me/
+- URL to edit: https://glitch.com/edit/#!/fcc-npm-packages-dw
+- URL to fCC test: https://fcc-npm-packages-dw.glitch.me
 
 **package.json**: The file package.json is the center of any Node.js project or npm package. It stores information about your project just like the `<head>`-section in a HTML document describes the content of a webpage. The package.json consists of a single JSON-object where information is stored in "key": value-pairs. There are only two required fields in a minimal package.json - name and version - but it’s a good practice to provide additional information about your project that could be useful to future users or maintainers.
 
