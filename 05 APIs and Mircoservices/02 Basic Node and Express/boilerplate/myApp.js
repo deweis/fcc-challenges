@@ -4,6 +4,8 @@ var app = express();
 // --> 7)  Mount the Logger middleware here
 
 // --> 11)  Mount the body-parser middleware  here
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
 /** 1) Meet the node console. */
 console.log('Hello World');
