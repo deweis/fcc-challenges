@@ -60,21 +60,32 @@ app.get('/:word/echo', function(req, res, next) {
   next();
 });
 
+/**
+ * If you want you can use the method app.route(path).get(handler).post(handler).
+ * This syntax allows you to chain different verb handlers on the same path route. You can save a bit of typing, and have cleaner code.
+ */
+
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
-app.get('/name', function(req, res, next) {
-  res.json({ name: `${req.query.first} ${req.query.last}` });
-  next();
-});
+app
+  .get('/name', function(req, res, next) {
+    res.json({ name: `${req.query.first} ${req.query.last}` });
+    next();
+  })
+  .post('/name', function(req, res, next) {
+    // 12) Get data form POST
+    res.json({ name: `${req.body.first} ${req.body.last}` });
+    next();
+  });
 
 /** 11) Get ready for POST Requests - the `body-parser` */
 // place it before all the routes !
 
-/** 12) Get data form POST  */
+/** 12) Get data form POST  
 app.post('/name', function(req, res, next) {
   res.json({ name: `${req.body.first} ${req.body.last}` });
   next();
-});
+});*/
 
 // This would be part of the basic setup of an Express app
 // but to allow FCC to run tests, the server is already active
