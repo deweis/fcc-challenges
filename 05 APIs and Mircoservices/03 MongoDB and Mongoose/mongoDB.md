@@ -7,3 +7,6 @@
 While there are many non-relational databases, Mongo's use of JSON as its document storage structure makes it a logical choice when learning backend JavaScript. Accessing documents and their properties is like accessing objects in JavaScript.
 
 **Mongoose.js** is an npm module for Node.js that allows you to write objects for Mongo as you would in JavaScript. This can make is easier to construct documents for storage in Mongo.
+
+First of all we need a **Schema**. Each schema maps to a MongoDB collection. It defines the shape of the documents within that collection.
+Schemas are building block for Models. They can be nested to create complex models. A model allows you to create instances of your objects, called documents.
