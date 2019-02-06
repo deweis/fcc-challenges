@@ -85,7 +85,18 @@ var Person = mongoose.model('Person', personSchema); /* = <Your Model> */
 // });
 
 var createAndSavePerson = function(done) {
-  done(null /*, data*/);
+  var addPerson = new Person({
+    name: 'den',
+    age: 20,
+    favoriteFoods: ['pasta', 'pizza']
+  });
+
+  // https://mongoosejs.com/docs/models.html, https://www.tutorialkart.com/nodejs/mongoose/insert-document-to-mongodb/
+  addPerson.save(function(err, person) {
+    if (err) return console.error(err);
+    console.log(person.name + ' saved to person collection.');
+    done(null, addPerson);
+  });
 };
 
 /** 4) Create many People with `Model.create()` */
