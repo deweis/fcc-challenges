@@ -293,7 +293,14 @@ var removeManyPeople = function(done) {
 var queryChain = function(done) {
   var foodToSearch = 'burrito';
 
-  done(null /*, data*/);
+  Person.find({ favoriteFoods: foodToSearch })
+    .sort({ name: 'asc' }) // or { name: 1 }
+    .limit(2) // https://stackoverflow.com/questions/5830513/how-do-i-limit-the-number-of-returned-items
+    .select('-age') // https://stackoverflow.com/questions/14559200/how-to-exclude-one-particular-field-from-a-collection-in-mongoose
+    .exec(function(err, result) {
+      if (err) return console.error(err);
+      done(null, result);
+    });
 };
 
 /** **Well Done !!**
