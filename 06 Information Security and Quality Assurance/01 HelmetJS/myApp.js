@@ -42,6 +42,7 @@ app.use(helmet.hidePoweredBy({ setTo: 'Love & Coffee' })); //
 
 // We don't need our app to be framed, so you should use `helmet.frameguard()`
 // passing to it the configuration object `{action: 'deny'}`
+app.use(helmet.frameguard({ action: 'deny' }));
 
 /** 4) Mitigate the risk of XSS - `helmet.xssFilter()` */
 
