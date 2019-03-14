@@ -28,3 +28,7 @@ It still has limited support.
 Browsers can use **content or MIME sniffing** to adapt to different datatypes coming from a response. They override the Content-Type headers to guess and process the data. While this can be convenient in some scenarios, it can also lead to some dangerous attacks. This middleware sets the `X-Content-Type-Options` header to `nosniff`. This instructs the browser to not bypass the provided Content-Type.
 
 - https://helmetjs.github.io/docs/dont-sniff-mimetype/
+
+Some web applications will serve **untrusted HTML for download**. Some versions of Internet Explorer by default open those HTML files in the context of your site. This means that an untrusted HTML page could start doing bad things in the context of your pages. This middleware sets the `X-Download-Options` header to `noopen`. This will prevent IE users from executing downloads in the trusted site’s context.
+
+- https://helmetjs.github.io/docs/ienoopen/
