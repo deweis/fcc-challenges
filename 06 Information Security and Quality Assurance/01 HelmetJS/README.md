@@ -39,6 +39,10 @@ Configure `helmet.hsts()` to use HTTPS for the next 90 days. Pass the config obj
 
 - https://helmetjs.github.io/docs/hsts/
 
-To improve performance, most browsers **prefetch DNS** records for the links in a page. In that way the destination ip is already known when the user clicks on a link. This may lead to over-use of the DNS service (if you own a big website, visited by millions people…), privacy issues (one eavesdropper could infer that you are on a certain page), or page statistics alteration (some links may appear visited even if they are not). If you have high security needs you can disable DNS prefetching, at the cost of a performance penalty.
+To improve performance, most browsers prefetch DNS\* records for the links in a page. In that way the destination ip is already known when the user clicks on a link. This may lead to over-use of the DNS service (if you own a big website, visited by millions people…), privacy issues (one eavesdropper could infer that you are on a certain page), or page statistics alteration (some links may appear visited even if they are not). If you have high security needs you can **disable DNS prefetching**, at the cost of a performance penalty.
 
 - https://helmetjs.github.io/docs/dns-prefetch-control/
+
+If you are releasing an update for your website, and you want the users to always download the newer version, you can (try to) **disable caching** on client’s browser. It can be useful in development too. Caching has performance benefits, which you will lose, so only use this option when there is a real need.
+
+- https://helmetjs.github.io/docs/nocache/
