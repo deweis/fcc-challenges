@@ -52,3 +52,5 @@ This challenge highlights one promising new defense that can significantly reduc
 By default, directives are wide open, so it’s important to set the `defaultSrc` directive as a fallback. Helmet supports both defaultSrc and `default-src` naming styles. The fallback applies for most of the unspecified directives. In this exercise, use `helmet.contentSecurityPolicy()`, and configure it setting the defaultSrc directive to ["self"] (the list of allowed sources must be in an array), in order to trust only your website address by default. Set also the scriptSrc directive so that you will allow scripts to be downloaded from your website, and from the domain `'trusted-cdn.com'`.
 
 - https://helmetjs.github.io/docs/csp/
+
+  `app.use(helmet())` will automatically include all the middleware introduced above, except `noCache()`, and `contentSecurityPolicy()`, but these can be enabled if necessary. You can also disable or configure any other middleware individually, using a configuration object.
