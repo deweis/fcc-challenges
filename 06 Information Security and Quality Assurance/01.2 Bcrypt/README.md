@@ -11,3 +11,7 @@ As hashing is designed to be computationally intensive, it is recommended to do 
 
 Now when you need to figure out if a new input is the same data as the hash you would just use the compare function:
 `bcrypt.compare(myPlaintextPassword, hash, (err, res) => { /*res == true or false*/ });`.
+
+Hashing **synchronously** is just as easy to do but can cause lag if using it server side with a high cost or with hashing done very often. Hashing with this method is as easy as calling `var hash = bcrypt.hashSync(myPlaintextPassword, saltRounds);`
+
+Now to compare a password input with the new sync hash, you would use the compareSync method: `var result = bcrypt.compareSync(myPlaintextPassword, hash);` with the result being a boolean true or false.
