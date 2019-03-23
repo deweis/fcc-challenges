@@ -124,11 +124,11 @@ suite('Unit Tests', function() {
   suite('Arrays', function() {
     /** 11 - #isArray vs #isNotArray **/
     test('#isArray, #isNotArray', function() {
-      assert.fail(
+      assert.isArray(
         'isThisAnArray?'.split(''),
         'String.prototype.split() returns an Array'
-      );
-      assert.fail([1, 2, 3].indexOf(2), 'indexOf returns a number.');
+      ); // assert.fail('isThisAnArray?'.split(''), 'String.prototype.split() returns an Array');
+      assert.isNotArray([1, 2, 3].indexOf(2), 'indexOf returns a number.'); // assert.fail([1,2,3].indexOf(2), 'indexOf returns a number.');
     });
 
     /** 12 - #include vs #notInclude **/
