@@ -146,10 +146,32 @@ suite('Functional Tests', function() {
           .request(server)
           .put('/travellers')
           /** send {surname: 'Colombo'} here **/
+          .send({
+            name: 'Cristoforo',
+            surname: 'Colombo',
+            dates: '1451 - 1506'
+          }) // attach the payload, encoded as JSON
           // .send({...})
           .end(function(err, res) {
             /** your tests here **/
-            assert.fail(); // remove this after adding tests
+            // assert.fail(); // remove this after adding tests
+            assert.equal(res.status, 200, 'response status should be 200');
+            assert.equal(
+              res.type,
+              'application/json',
+              'Response should be json'
+            );
+
+            assert.equal(
+              res.body.name,
+              'Cristoforo',
+              'res.body.name should be "Marco"'
+            );
+            assert.equal(
+              res.body.surname,
+              'Colombo',
+              'res.body.surname should be "Polo"'
+            );
 
             done(); // Never forget the 'done()' callback...
           });
