@@ -227,7 +227,7 @@ suite('Functional Tests', function() {
 
   // On Gomix we'll use this setting
   /** ### Copy your project's url here  ### **/
-  Browser.site = 'https://sincere-cone.gomix.me';
+  Browser.site = 'https://fcc-chai-dw.glitch.me/ '; // https://sincere-cone.gomix.me
 
   // If you are testing on a local environment replace the line above  with
   // Browser.localhost('example.com', (process.env.PORT || 3000));
@@ -299,17 +299,16 @@ suite('Functional Tests', function() {
           /** YOUR TESTS HERE, Don't forget to remove assert.fail() **/
 
           // pressButton is Async.  Waits for the ajax call to complete...
-
           // assert that status is OK 200
-
-          // assert that the text inside the element 'span#name' is 'Marco'
-
-          // assert that the text inside the element 'span#surname' is 'Polo'
-
+          browser.assert.success();
+          // assert that the text inside the element 'span#name' is 'Cristoforo'
+          browser.assert.text('span#name', 'Cristoforo');
+          // assert that the text inside the element 'span#surname' is 'Colombo'
+          browser.assert.text('span#surname', 'Colombo');
           // assert that the element(s) 'span#dates' exist and their count is 1
+          browser.assert.element('span#dates', 1);
 
-          assert.fail();
-
+          // assert.fail();
           done(); // It's an async test, so we have to call 'done()''
         });
         //
