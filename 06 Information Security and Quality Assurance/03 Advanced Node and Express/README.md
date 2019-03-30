@@ -17,3 +17,9 @@ Looking at our pug file `index.pug` included in your project, we used the variab
 To pass those alone from our server, you will need to add an object as a second argument to your `res.render` with the variables and their value. For example, pass this object along setting the variables for your index view: `{title: 'Hello', message: 'Please login'});`
 
 It should look like: `res.render(process.cwd() + '/views/pug/index', {title: 'Hello', message: 'Please login'});`
+
+It's time to **set up Passport** so we can finally start allowing a user to register or login to an account! In addition to Passport, we will use **Express-session** to handle sessions. Using this middleware saves the session id as a cookie in the client and allows us to access the session data using that id on the server. This way we keep personal account information out of the cookie used by the client to verify to our server they are authenticated and just keep the key to access the data stored on the server.
+
+You will need to set up the session settings now and initialize Passport. Be sure to first create the variables 'session' and 'passport' to require `'express-session'` and `'passport'` respectively.
+
+To set up your express app to use use the session we'll define just a few basic options. Be sure to add `'SESSION_SECRET'` to your .env file and give it a random value. This is used to compute the hash used to encrypt your cookie!
