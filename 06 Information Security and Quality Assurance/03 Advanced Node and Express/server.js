@@ -7,6 +7,29 @@ const fccTesting = require('./freeCodeCamp/fcctesting.js');
 const passport = require('passport');
 const session = require('express-session');
 const ObjectID = require('mongodb').ObjectID;
+const mongo = require('mongodb').MongoClient;
+
+mongo.connect(process.env.DATABASE, (err, db) => {
+  if (err) {
+    console.log('Database error: ' + err);
+  } else {
+    console.log('Successful database connection');
+
+    passport.serializeUser((user, done) => {
+      done(null, user._id);
+    });
+
+    passport.deserializeUser((id, done) => {
+      db.collection('users').findOne({ _id: new ObjectID(id) }, (err, doc) => {
+        done(null, doc);
+      });
+    });
+
+    app.listen(process.env.PORT || 3000, () => {
+      console.log('Listening on port ' + process.env.PORT);
+    });
+  }
+});
 
 fccTesting(app); //For FCC testing purposes
 app.use('/public', express.static(process.cwd() + '/public'));
@@ -24,27 +47,9 @@ app.use(
 
 app.set('view engine', 'pug');
 
-passport.serializeUser((user, done) => {
-  done(null, user._id);
-});
-
-passport.deserializeUser((id, done) => {
-  done(null, null);
-  /*db.collection('users').findOne(
-        {_id: new ObjectID(id)},
-        (err, doc) => {
-            done(null, doc);
-        }
-    );*/
-});
-
 app.route('/').get((req, res) => {
   res.render(process.cwd() + '/views/pug/index', {
     title: 'Hello',
     message: 'Please login'
   });
-});
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Listening on port ' + process.env.PORT);
 });
