@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
 const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const session = require('express-session');
 const ObjectID = require('mongodb').ObjectID;
 const mongo = require('mongodb').MongoClient;
@@ -14,6 +15,27 @@ mongo.connect(process.env.DATABASE, (err, db) => {
     console.log('Database error: ' + err);
   } else {
     console.log('Successful database connection');
+
+    passport.use(
+      new LocalStrategy(function(username, password, done) {
+        db.collection('users').findOne({ username: username }, function(
+          err,
+          user
+        ) {
+          console.log('User ' + username + ' attempted to log in.');
+          if (err) {
+            return done(err);
+          }
+          if (!user) {
+            return done(null, false);
+          }
+          if (password !== user.password) {
+            return done(null, false);
+          }
+          return done(null, user);
+        });
+      })
+    );
 
     passport.serializeUser((user, done) => {
       done(null, user._id);
