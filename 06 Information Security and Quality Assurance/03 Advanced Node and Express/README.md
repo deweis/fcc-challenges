@@ -45,3 +45,9 @@ Now you will have to tell passport to use an instantiated `LocalStartegy` object
 This is defining the process to take when we try to authenticate someone locally. First it tries to find a user in our database with the username entered, then it checks for the password to match, then finally if no errors have popped up that we checked for, like an incorrect password, the users object is returned and they are authenticated.
 
 Many strategies are set up using different settings, general it is easy to set it up based on the README in that strategies repository though. A good example of this is the Github strategy where we don't need to worry about a username or password because the user will be sent to Github's auth page to authenticate and as long as they are logged in and agree then Github returns their profile for us to use.
+
+For this challenge you should add the route `/login` to accept a `POST request`. To authenticate on this route you need to add a middleware to do so before then sending a response. This is done by just passing another argument with the middleware before your `function(req,res)` with your response! The middleware to use is `passport.authenticate('local')`.
+
+`passport.authenticate` can also take some options as an argument such as: `{ failureRedirect: '/' }` which is incredibly useful so be sure to add that in as well. As a response after using the middleware (which will only be called if the authentication middleware passes) should be to redirect the user to `/profile` and that route should render the view `'profile.pug'`.
+
+If the authentication was successful, the user object will be saved in `req.user`.

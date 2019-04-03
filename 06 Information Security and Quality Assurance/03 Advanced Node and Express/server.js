@@ -72,6 +72,21 @@ app.set('view engine', 'pug');
 app.route('/').get((req, res) => {
   res.render(process.cwd() + '/views/pug/index', {
     title: 'Hello',
-    message: 'Please login'
+    message: 'Please login',
+    showLogin: true
   });
 });
+
+/*app.route('/profile').get((req, res) => {
+  res.render(process.cwd() + '/views/pug/profile');
+});*/
+
+app
+  .route('/login')
+  .post(
+    passport.authenticate('local', { failureRedirect: '/' }),
+    (req, res) => {
+      console.log(`User ${req.user} attempted to log in.`);
+      res.redirect('/');
+    }
+  );
