@@ -28,6 +28,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+/* Middleware to check if the user is authenticated*/
+const ensureAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+};
+
 mongo.connect(process.env.DATABASE, (err, db) => {
   if (err) {
     console.log('Database error: ' + err);
@@ -67,13 +75,13 @@ mongo.connect(process.env.DATABASE, (err, db) => {
 
     app.route('/').get((req, res) => {
       res.render(process.cwd() + '/views/pug/index', {
-        title: 'Hello',
+        title: 'Home Page',
         message: 'Please login',
         showLogin: true
       });
     });
 
-    app.route('/profile').get((req, res) => {
+    app.route('/profile').get(ensureAuthenticated, (req, res) => {
       res.render(process.cwd() + '/views/pug/profile');
     });
 
