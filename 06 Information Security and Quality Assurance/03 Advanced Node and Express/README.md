@@ -57,3 +57,13 @@ As in, any user can just go to /profile whether they authenticated or not by typ
 The challenge here is creating the middleware function `ensureAuthenticated(req, res, next)`, which will check if a user is authenticated by calling passports `isAuthenticated` on the request which in turn checks for `req.user` is to be defined. If it is then `next()` should be called, otherwise we can just respond to the request with a redirect to our homepage to login. Now add `ensureAuthenticated` as a middleware to the request for the profile page before the argument to the get request containing the function that renders the page.
 
 Now that we can ensure the user accessing the `/profile` is authenticated, we can use the information contained in `'req.user'` on our page!
+
+Creating the logout logic is easy. The route should just unauthenticate the user and redirect to the home page instead of rendering any view. In passport, unauthenticating a user is as easy as just calling `req.logout();` before redirecting.
+
+You may have noticed we also we're not handling missing pages (404), the common way to handle this in Node is with the following middleware.
+
+`app.use((req, res, next) => {`
+`res.status(404)`
+`.type('text')`
+`.send('Not Found');`
+`});`
