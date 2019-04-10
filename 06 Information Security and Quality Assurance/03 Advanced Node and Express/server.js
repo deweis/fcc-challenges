@@ -28,14 +28,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* Middleware to check if the user is authenticated*/
-const ensureAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/');
-};
-
 mongo.connect(process.env.DATABASE, (err, db) => {
   if (err) {
     console.log('Database error: ' + err);
@@ -73,17 +65,42 @@ mongo.connect(process.env.DATABASE, (err, db) => {
       })
     );
 
+    /* Middleware to check if the user is authenticated*/
+    const ensureAuthenticated = (req, res, next) => {
+      if (req.isAuthenticated()) {
+        return next();
+      }
+      res.redirect('/');
+    };
+
+    // Registration of New Users"
+    // https://github.com/freeCodeCamp/freeCodeCamp/issues/17820
+    /*if (process.env.ENABLE_DELAYS) app.use((req, res, next) => {
+      switch (req.method) {
+        case 'GET':
+          switch (req.url) {
+            case '/logout': return setTimeout(() => next(), 500);
+            case '/profile': return setTimeout(() => next(), 700);
+            default: next();
+          }
+        break;
+        case 'POST':
+          switch (req.url) {
+            case '/login': return setTimeout(() => next(), 900);
+            default: next();
+          }
+        break;
+        default: next();
+      }
+    });*/
+
+    // Enable to pass the challenge called "Advanced Node and Express -
     app.route('/').get((req, res) => {
       res.render(process.cwd() + '/views/pug/index', {
         title: 'Home Page',
         message: 'Please login',
-        showLogin: true
-      });
-    });
-
-    app.route('/profile').get(ensureAuthenticated, (req, res) => {
-      res.render(process.cwd() + '/views/pug/profile', {
-        username: req.user.username
+        showLogin: true,
+        showRegistration: true
       });
     });
 
@@ -92,10 +109,46 @@ mongo.connect(process.env.DATABASE, (err, db) => {
       .post(
         passport.authenticate('local', { failureRedirect: '/' }),
         (req, res) => {
-          console.log(`User ${req.user} attempted to log in.`);
-          res.redirect('/');
+          console.log(`User ${req.user.username} attempted to log in..`);
+          res.redirect('/profile');
         }
       );
+
+    app.route('/profile').get(ensureAuthenticated, (req, res) => {
+      res.render(process.cwd() + '/views/pug/profile', {
+        username: req.user.username
+      });
+    });
+
+    app.route('/register').post(
+      (req, res, next) => {
+        db.collection('users').findOne(
+          { username: req.body.username },
+          function(err, user) {
+            if (err) {
+              next(err);
+            } else if (user) {
+              res.redirect('/');
+            } else {
+              db.collection('users').insertOne(
+                { username: req.body.username, password: req.body.password },
+                (err, doc) => {
+                  if (err) {
+                    res.redirect('/');
+                  } else {
+                    next(null, user);
+                  }
+                }
+              );
+            }
+          }
+        );
+      },
+      passport.authenticate('local', { failureRedirect: '/' }),
+      (req, res, next) => {
+        res.redirect('/profile');
+      }
+    );
 
     app.route('/logout').get((req, res) => {
       req.logout();
