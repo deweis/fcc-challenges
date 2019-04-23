@@ -11,7 +11,16 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const app = express();
 const http = require('http').Server(app);
+const io = require('socket.io')(http);
 const sessionStore = new session.MemoryStore();
+
+// https://www.freecodecamp.org/forum/t/done-advanced-node-and-express-set-up-the-environment/206574/9
+const cors = require('cors');
+app.use(cors());
+
+// const passportSockerIo = require('passportSocketIo');
+// https://www.freecodecamp.org/forum/t/advanced-node-and-express-challenges-missing-stuff/199826/8
+// const passportSocketIo = require("passport.socketio");
 
 fccTesting(app); //For FCC testing purposes
 
@@ -40,6 +49,10 @@ mongo.connect(process.env.DATABASE, (err, db) => {
   http.listen(process.env.PORT || 3000);
 
   //start socket.io code
+
+  io.on('connection', socket => {
+    console.log('A user has connected');
+  });
 
   //end socket.io code
 });
