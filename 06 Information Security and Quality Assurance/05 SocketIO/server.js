@@ -46,12 +46,17 @@ mongo.connect(process.env.DATABASE, (err, db) => {
   auth(app, db);
   routes(app, db);
 
+  let currentUsers = 0;
+
   http.listen(process.env.PORT || 3000);
 
   //start socket.io code
 
   io.on('connection', socket => {
     console.log('A user has connected');
+    ++currentUsers;
+    console.log(currentUsers);
+    io.emit('user count', currentUsers);
   });
 
   //end socket.io code
