@@ -12,3 +12,9 @@ To make sure clients continuously have the updated count of current users, you s
 
 Note
 Just like 'disconnect', all other events that a socket can emit to the server should be handled within the connecting listener where we have 'socket' defined.
+
+Currently, you cannot determine who is connected to your web socket. While 'req.user' containers the user object, thats only when your user interacts with the web server and with web sockets you have no req (request) and therefor no user data. One way to solve the problem of knowing who is connected to your web socket is by parsing and decoding the cookie that contains the passport session then deserializing it to obtain the user object. Luckily, there is a package on NPM just for this that turns a once complex task into something simple!
+
+Add `'passport.socketio'` as a dependency and require it as `'passportSocketIo'`.
+
+Now we just have to tell Socket.IO to use it and set the options. Be sure this is added before the existing socket code and not in the existing connection listener.

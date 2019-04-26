@@ -15,6 +15,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const sessionStore = new session.MemoryStore();
+const passportSocketIo = require('passport.socketio');
 
 // https://www.freecodecamp.org/forum/t/done-advanced-node-and-express-set-up-the-environment/206574/9
 const cors = require('cors');
@@ -42,6 +43,15 @@ app.use(
   })
 );
 
+io.use(
+  passportSocketIo.authorize({
+    cookieParser: cookieParser,
+    key: 'express.sid',
+    secret: process.env.SESSION_SECRET,
+    store: sessionStore
+  })
+);
+
 mongo.connect(process.env.DATABASE, (err, db) => {
   if (err) console.log('Database error: ' + err);
 
@@ -55,15 +65,15 @@ mongo.connect(process.env.DATABASE, (err, db) => {
   //start socket.io code
 
   io.on('connection', socket => {
-    console.log('A user has connected');
+    console.log(`'${socket.request.user.name}' has connected`);
     ++currentUsers;
-    console.log(currentUsers);
+    console.log('Logged users: ', currentUsers);
     io.emit('user count', currentUsers);
 
     socket.on('disconnect', () => {
-      console.log('A user has disconnected');
+      console.log(`'${socket.request.user.name}' has disconnected`);
       --currentUsers;
-      console.log(currentUsers);
+      console.log('Logged users: ', currentUsers);
       io.emit('user count', currentUsers);
     });
   });
