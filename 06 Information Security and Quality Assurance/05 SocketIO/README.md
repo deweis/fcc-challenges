@@ -18,3 +18,5 @@ Currently, you cannot determine who is connected to your web socket. While 'req.
 Add `'passport.socketio'` as a dependency and require it as `'passportSocketIo'`.
 
 Now we just have to tell Socket.IO to use it and set the options. Be sure this is added before the existing socket code and not in the existing connection listener.
+
+Many chat rooms are able to annouce when a user connects or disconnects and then display that to all of the connected users in the chat. Seeing as though you already are emitting an event on connect and disconnect, you will just have to modify this event to support such feature. The most logical way of doing so is sending 3 pieces of data with the event: name of the user connected/disconnected, the current user count, and if that name connected or disconnected.

@@ -1,6 +1,6 @@
 'use strict';
 
-/* npm i express express-session body-parser mongodb passport cokkie-parser socket.io --save*/
+/* npm i express express-session body-parser mongodb passport cookie-parser socket.io passport.socketio --save */
 
 const express = require('express');
 const session = require('express-session');
@@ -68,13 +68,23 @@ mongo.connect(process.env.DATABASE, (err, db) => {
     console.log(`'${socket.request.user.name}' has connected`);
     ++currentUsers;
     console.log('Logged users: ', currentUsers);
-    io.emit('user count', currentUsers);
+    //io.emit('user count', currentUsers);
+    io.emit('user', {
+      name: socket.request.user.name,
+      currentUsers,
+      connected: true
+    });
 
     socket.on('disconnect', () => {
       console.log(`'${socket.request.user.name}' has disconnected`);
       --currentUsers;
       console.log('Logged users: ', currentUsers);
-      io.emit('user count', currentUsers);
+      //io.emit('user count', currentUsers);
+      io.emit('user', {
+        name: socket.request.user.name,
+        currentUsers,
+        connected: false
+      });
     });
   });
 
